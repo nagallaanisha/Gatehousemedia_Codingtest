@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+       <style>
+           *{
+               background-color: linen;
+           }
+           .border{
+               border: 1px solid black;
+               width: 100px;
+               cursor: pointer;
+              
+           }
+           li{
+               padding: 20px;
+               
+           }
+           .bold{
+               font-weight: bold;
+           }
+           .italic{
+               font-style: italic;
+           }
+           
+        </style>
+    </head>
+    <body>
+        <ol id="list"></ol>
+        <script>
+            var birds,bLength,i,bDisplay;
+            birds = ["Parrot","Peacock","Pigeon","Owl","Ostrich","Eagle","Turkey","Hen","Sparrow","Kingfisher",
+                        "Hawk","Duck","Hummingbird","Penguin","Flamingo","Rooster","Goose","Macaw","Toucan","Heron"];
+            bLength = birds.length;
+            
+            for(i=0;i<bLength;i++){
+                
+                bDisplay = "<li id="+i+">"+birds[i]+"</li>";
+                
+                $("#list").append(bDisplay);
+                
+                var j= i+1;
+                if((j%3)==0){
+                    
+                  $('#'+i).addClass("bold");   
+                }
+                if((j%5)==0){
+                    
+                    $('#'+i).addClass("italic");
+                }
+                if((j%2)==0){
+                    
+                    $('#'+i).addClass("border");
+                    $('#'+i).attr('title','Click to remove '+birds[i]);
+                    $(document).on("click","#"+i,function(){
+		               $(this).remove();
+                        
+                    });
+                    
+                }
+                
+            }  
+           
+        </script>
+    </body>
+</html>
+
