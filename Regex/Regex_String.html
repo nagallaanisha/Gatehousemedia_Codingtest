@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                background-color: lightcyan;
+            }
+            .wrapper{
+                text-align: center;
+                margin-top: 200px;
+            }
+            input{
+               border-radius: 10px;
+                padding: 10px;
+                background-color: lightblue;
+                border: 1px solid black;
+                color:black;
+               
+            }
+            
+        </style>
+    </head>
+    <body>
+        <form class="wrapper">
+            <p style="color:red;font-weight:bold;">Enter the String in text field and click submit, the first string in the   text field is replaced at the end! </p>
+            
+            <input type="text" id="userInput" placeholder="Enter String"/>
+            <input type="button" onClick = "stringSubst();" value = "Submit"/>
+        
+            <div id ="replace"></div>
+        </form>
+        <script>
+            function stringSubst(){
+                var regex = /(\S+)(\s)(.*)/;
+                var str = document.getElementById('userInput').value;
+                var newStr = str.replace(regex,'$3 $1');
+                document.getElementById('replace').innerHTML = newStr;
+            }
+        </script>
+    </body>
+</html>
