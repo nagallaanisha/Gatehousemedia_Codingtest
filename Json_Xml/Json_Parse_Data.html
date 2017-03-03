@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <style>
+            table {
+                width:100%;
+            }
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+   
+            }
+            table th{
+                 background-color: black;
+                color:white;
+            }
+            th, td {
+                padding: 5px;
+                text-align: left;
+            }
+            table tr:nth-child(even) {
+                background-color: lightblue;
+            }
+            table tr:nth-child(odd) {
+                background-color:lightyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div >
+            <table>
+                <tr>
+                    <th>First Name</th>
+                     <th>Last Name</th>
+                     <th>Age</th>
+                     <th>Position</th>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+
+        $(document).ready(function(){
+            var URL = "Json_employee.json";
+            var tr;
+            $.getJSON(URL, function(data){
+                 $.each(data.employees, function(key, value){ 
+                    tr = $('<tr/>');
+                    tr.append("<td>"+value.firstName+"</td>"); 
+                     tr.append("<td>"+value.lastName+"</td>");
+                     tr.append("<td>"+value.age+"</td>");
+                    tr.append("<td>"+value.position+"</td>");
+                    $('table').append(tr);
+        
+                    });
+                });
+        });	
+
+        </script>
+    </body>
+</html>
